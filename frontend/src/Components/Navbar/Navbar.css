@@ -1,0 +1,120 @@
+:root {
+  --bg: #000;
+  --grey: #2d2e2e;
+  --btn-blue: #3891a6;
+  --accent: #23ce6b;
+  --text-white: #fff;
+}
+
+.navBar {
+  height: 80px;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: black !important;
+  border-bottom: 1px solid white;
+
+  font-size: 1.2rem;
+  position: sticky;
+}
+.navBar {
+  background-color: transparent;
+}
+
+.navMenu {
+  color: white;
+
+  display: flex;
+  justify-content: space-between !important;
+  align-items: center;
+
+  width: 90%;
+}
+
+.navMenu a {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+.moneyContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around !important;
+  justify-content: center;
+  width: 50%;
+}
+
+.moneyContainer p {
+  margin: 0 4px;
+  font-size: 1.4rem;
+}
+
+.moneyContainer .betsLocked {
+  text-align: center;
+}
+
+.moneyBtn,
+.betBtn {
+  background-color: transparent;
+  color: var(--text-white);
+
+  border-radius: 10px;
+  font-weight: normal;
+  font-size: 0.8rem;
+
+  width: 80px;
+  height: 100%;
+
+  text-align: center;
+  text-decoration: none;
+
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+
+  padding: 6px;
+  margin: 0 6px;
+}
+
+.betnBtnDisabled {
+  background-color: transparent;
+  color: var(--text-white);
+
+  border-radius: 10px;
+  font-weight: normal;
+  font-size: 0.8rem;
+
+  width: 80px;
+  height: 100%;
+
+  text-align: center;
+  text-decoration: none;
+
+  display: inline-block;
+  cursor: not-allowed;
+  outline: none;
+
+  padding: 6px;
+  margin: 0 6px;
+}
+
+.moneyBtn,
+.betBtn {
+  border: 1px solid var(--text-white) !important;
+}
+
+.betnBtnDisabled {
+  border: 1px solid var(--grey);
+  color: var(--grey);
+}
+
+.moneyBtn:hover,
+.betBtn:hover {
+  transition: 0.5s;
+  background-color: var(--text-white);
+  color: black;
+}

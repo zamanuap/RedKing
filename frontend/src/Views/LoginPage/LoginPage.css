@@ -1,0 +1,19 @@
+.loginPage {
+  display: flex;
+  align-items: center !important;
+  justify-content: center !important;
+
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url('../../images/blackingbg.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* 
+.loginPage:not(:hover) {
+    filter: invert(100%);
+} */
+
+.loginPage:hover {
+  transition: 0.5s;
+}

@@ -1,0 +1,28 @@
+.allHandValues {
+  border: 1px solid var(--grey);
+  border-radius: 12px;
+}
+
+.playerHandValue {
+  display: flex;
+  justify-content: center;
+  align-items: space-between !important;
+
+  margin: 0 2rem;
+}
+
+.playerHandValue p {
+  margin: 0 2rem;
+}
+
+.dealerHandValue {
+  display: flex;
+  justify-content: center;
+  align-items: space-between !important;
+
+  margin: 0 2rem;
+}
+
+.dealerHandValue p {
+  margin: 0 2rem;
+}

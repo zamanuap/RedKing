@@ -1,0 +1,83 @@
+.homeScreen {
+  background-image: url('../../images/2.png') !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  width: 100%;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+}
+
+.homeScreen:hover {
+  filter: invert(100%);
+  transition: 0.5s;
+}
+
+.logregContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #f6f6f6;
+
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: -14rem;
+  height: 10rem;
+  border-radius: 4rem;
+}
+
+.logregContainer:hover {
+  filter: invert(100%);
+  transition: 0.5s;
+}
+
+.blackingHeader {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.buttonContainer {
+  width: 80%;
+
+  display: flex;
+  justify-content: center;
+}
+
+.buttonContainer button {
+  margin: 0 1rem;
+  padding: 8px 16px;
+
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.registerButton {
+  background-color: #000;
+  color: #f6f6f6;
+}
+
+.registerButton:hover {
+  background-color: #f6f6f6;
+  color: #000;
+  transition: 0.5s;
+  border-color: 1px solid black;
+}
+
+.loginButton {
+  background-color: #f6f6f6;
+  color: #000;
+}
+
+.loginButton:hover {
+  background-color: #000;
+  color: #f6f6f6;
+  transition: 0.5s;
+  border-color: transparent;
+}

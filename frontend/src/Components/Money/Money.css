@@ -1,0 +1,137 @@
+.moneyHomeScreen {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url('../../images/blackingbg.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  width: 100%;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+}
+
+.moneyHomeScreen:hover {
+  /* filter: invert(100%); */
+  transition: 0.5s;
+}
+
+.btnContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: white;
+  border: 1px solid black !important;
+  border-radius: 16px;
+
+  width: 50%;
+  margin: 0 auto;
+
+  height: 10rem;
+}
+
+.btnContainer:hover {
+  background-color: transparent;
+  filter: invert(100%);
+  transition: 0.5s;
+  /* color: white; */
+}
+
+/* .btnContainer h3:hover {
+} */
+
+.moneyHeader {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.moneyInputDiv {
+  width: 80%;
+  padding: 10px;
+}
+
+.moneyImg {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 6px;
+}
+.moneyInput {
+  width: 100%;
+  height: 30px;
+  border-radius: 16px;
+  padding: 0 12px;
+}
+
+.twoButtonContainer {
+  width: 60%;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between !important;
+}
+
+.twoButtonContainer button {
+  margin: 0 1rem;
+  padding: 8px 16px;
+
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.addBtn {
+  width: 100%;
+  height: 30px;
+  background-color: #000;
+  color: white;
+  border-radius: 6px !important;
+}
+
+.addBtn:hover {
+  background-color: white;
+  color: black;
+  transition: 0.5s;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+.withdrawBtn {
+  width: 100%;
+  height: 30px;
+  background-color: #000;
+  color: white;
+  border-radius: 5px;
+
+  margin: 0 8px;
+}
+
+.withdrawBtn:hover {
+  background-color: white;
+  color: black;
+  transition: 0.5s;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+.backButton {
+  width: 100%;
+  height: 30px;
+  background-color: white;
+  color: black;
+  border-radius: 6px !important;
+
+  margin: 0 8px;
+}
+
+.backButton:hover {
+  background-color: black;
+  color: white;
+  transition: 0.5s;
+  border-color: black;
+  cursor: pointer;
+}

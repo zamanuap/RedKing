@@ -1,0 +1,5 @@
+2022-06-06 10:29:41 INFO  LoggingUtil:49 - Deck Initialized by test@email.com
+2022-06-06 10:29:47 INFO  LoggingUtil:45 - user created test@email.com
+2022-06-06 10:29:50 INFO  LoggingUtil:81 - Deck successfully retrieved
+2022-06-06 10:29:50 INFO  LoggingUtil:49 - Deck Initialized by test@gmail.com
+2022-06-06 10:29:54 INFO  LoggingUtil:45 - user created test@gmail.com

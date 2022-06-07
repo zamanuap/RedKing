@@ -1,0 +1,87 @@
+.page-container {
+  height: 100vh;
+}
+
+/* .scoreReturnContainer {
+  display: flex;
+  flex-direction: column;
+} */
+
+.score-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 10fr 1fr 1fr 10fr;
+
+  margin: 0 auto;
+
+  align-items: center;
+  justify-content: center !important;
+
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url('../../images/blackingbg.jpg');
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+table {
+  border-collapse: collapse;
+  border: 1px solid white;
+
+  margin: 2rem auto;
+}
+
+th,
+td {
+  border: 1px solid white;
+  padding: 10px;
+}
+
+table.score-table {
+  table-layout: auto;
+}
+
+.score-table {
+  grid-column-start: 2;
+}
+
+.rows {
+  color: aliceblue;
+  text-align: center;
+}
+
+.headers {
+  color: aliceblue;
+}
+
+.scoreReturnButton {
+  width: 200px;
+  grid-column-start: 2;
+  grid-row-start: 3;
+  justify-self: center;
+
+  border-radius: 10px;
+  font-weight: normal;
+  font-size: 0.8rem;
+
+  height: 100%;
+
+  text-align: center;
+  text-decoration: none;
+
+  cursor: pointer;
+  outline: none;
+
+  padding: 6px;
+  margin: 0 6px;
+  background-color: transparent;
+  color: white;
+  border-color: white;
+}
+
+.scoreReturnButton:hover {
+  background-color: white;
+  color: black;
+  transition: 0.5s;
+}

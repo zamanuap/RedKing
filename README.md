@@ -7,17 +7,18 @@ A Game similar to BlackJack, with slight alteration to the rules to win. As with
 
 ### Users
 1. Users may register for a new account and log into the system with the credentials provided
-2. Users may deposit/withdraw money into their account
-3. Users may start a new game which initializes a new deck of 52 shuffled cards
-4. Users may display the highscores board which displays all users in the system and their scores/money value
-5. Users can load a previous deck that they have initialized previously, and continue playing the deck
-6. during each game, users may bet a certain amount of money. If they win the round, they will receive double the amount the have betted
-7. user's may withdraw their money at the homepage
+2. Upon successful registration user will receive an email
+3. Users may deposit/withdraw money into their account
+4. Users may start a new game which initializes a new deck of 52 shuffled cards
+5. Users may display the highscores board which displays all users in the system and their scores/money value
+6. Users can load a previous deck that they have initialized previously, and continue playing the deck
+7. during each game, users may bet a certain amount of money. If they win the round, they will receive double the amount the have betted
+8. user's may withdraw their money at the homepage
 
 ## Technologies Used
 - Java version 1.8.0
 - React
-- AWS S3
+- AWS EC2, S3, RDS
 - Hibernate,
 - Spring Boot
 - Spring Data

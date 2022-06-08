@@ -32,7 +32,7 @@ export const loginUser = createAsyncThunk(
   async (credentials: Login, thunkAPI) => {
     try {
       const res = await axios.post(
-        'http://3.134.86.156:8000/user/login',
+        'http://18.191.118.66:8000/user/login',
         credentials
       );
 
@@ -76,7 +76,7 @@ export const registerUser = createAsyncThunk(
   async (credentials: Register, thunkAPI) => {
     try {
       const res = await axios.post(
-        'http://3.134.86.156:8000/user/register',
+        'http://18.191.118.66:8000/user/register',
         credentials
       );
 
@@ -104,7 +104,7 @@ export const updateUser = createAsyncThunk(
     try {
       // axios.defaults.withCredentials = true;
       const res = await axios.post(
-        'http://3.134.86.156:8000/user/update',
+        'http://18.191.118.66:8000/user/update',
         credentials
       );
 
@@ -123,7 +123,7 @@ export const depositMoney = createAsyncThunk(
     try {
       // axios.defaults.withCredentials = true;
       const res = await axios.post(
-        'http://3.134.86.156:8000/user/deposit',
+        'http://18.191.118.66:8000/user/deposit',
         amount
       );
       return res.data;
@@ -138,7 +138,7 @@ export const withdrawMoney = createAsyncThunk(
   async (amount: ManageMoney, thunkAPI) => {
     try {
       const res = await axios.post(
-        'http://3.134.86.156:8000/user/withdraw',
+        'http://18.191.118.66:8000/user/withdraw',
         amount
       );
       return res.data;
@@ -152,7 +152,7 @@ export const retrieveUserScores = createAsyncThunk(
   'user/scores',
   async (thunkAPI) => {
     try {
-      const res = await axios.get('http://3.134.86.156:8000/user/allUsers');
+      const res = await axios.get('http://18.191.118.66:8000/user/allUsers');
       return res.data;
     } catch (e) {
       console.log('Some Error');
@@ -164,7 +164,7 @@ export const sendMail = createAsyncThunk(
   'user/mail',
   async (data: Mail, thunkAPI) => {
     try {
-      const res = await axios.post('http://3.134.86.156:8000/mail', data);
+      const res = await axios.post('http://18.191.118.66:8000/mail', data);
       return res.data;
     } catch (e) {
       console.log('Some Error');

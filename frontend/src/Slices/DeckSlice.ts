@@ -35,7 +35,7 @@ export const initializeDeck = createAsyncThunk(
   async (user: IUser, thunkAPI) => {
     try {
       const res = await axios.post(
-        'http://3.134.86.156:8000/deck/initialize',
+        'http://18.191.118.66:8000/deck/initialize',
         user
       );
 
@@ -52,7 +52,7 @@ export const getDeck = createAsyncThunk(
   async (deckId: number | undefined, thunkAPI) => {
     try {
       const res = await axios.get(
-        `http://3.134.86.156:8000/deck/getDeck/${deckId}`
+        `http://18.191.118.66:8000/deck/getDeck/${deckId}`
       );
       console.log('coming from getDeck async line 63 ', res.data);
       return res.data;
@@ -67,7 +67,7 @@ export const getDeckByUID = createAsyncThunk(
   async (userId: number | undefined, thunkAPI) => {
     try {
       const res = await axios.get(
-        `http://3.134.86.156:8000/deck/getDeckByUID/${userId}`
+        `http://18.191.118.66:8000/deck/getDeckByUID/${userId}`
       );
       console.log('coming from getDeckByUID async line 78 ', res.data);
       return res.data;
@@ -81,7 +81,7 @@ export const getDealPlayer = createAsyncThunk(
   'deck/getDealPlayer',
   async (deckId: number | undefined, thunkAPI) => {
     try {
-      const res = await axios.get(`http://3.134.86.156:8000/deck/deal/${deckId}`);
+      const res = await axios.get(`http://18.191.118.66:8000/deck/deal/${deckId}`);
       return res.data;
     } catch (e) {
       console.log(e);
@@ -92,7 +92,7 @@ export const getDealDealer = createAsyncThunk(
   'deck/getDealDealer',
   async (deckId: number | undefined, thunkAPI) => {
     try {
-      const res = await axios.get(`http://3.134.86.156:8000/deck/deal/${deckId}`);
+      const res = await axios.get(`http://18.191.118.66:8000/deck/deal/${deckId}`);
       return res.data;
     } catch (e) {
       console.log(e);

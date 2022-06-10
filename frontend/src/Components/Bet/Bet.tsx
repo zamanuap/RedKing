@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { toggleLock, userBet, withdrawMoney } from '../../Slices/UserSlice';
+import { setSliceMoney, toggleLock, userBet, withdrawMoney } from '../../Slices/UserSlice';
 import { AppDispatch, RootState } from '../../Store';
 
 import './Bet.css';
@@ -9,21 +9,36 @@ import './Bet.css';
 export const Bet: React.FC = () => {
   const userState = useSelector((state: RootState) => state.user);
   const bet = useSelector((state: RootState) => state.user.bet);
+  const sliceMoney = useSelector((state: RootState) => state.user.sliceMoney);
   const [money, setMoney] = useState<string>('');
-
+  const [clicked, setClicked] = useState(false);
   const dispatch: AppDispatch = useDispatch();
   const navigator = useNavigate();
+
+  useEffect(() => {
+    if(clicked){
+      navigator("/playgame");
+    }
+    
+  },[clicked]);
 
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMoney(event.target.value);
   };
 
   const handleSubmit = (event: React.MouseEvent<HTMLInputElement>) => {
+    
+    setClicked(true);
+
     let amount = {
       userId: userState.user?.userId ? userState.user?.userId : 0,
       amount: parseFloat(money),
     };
 
+    if(money.length != 0){
+      dispatch(setSliceMoney(sliceMoney - parseFloat(money)));
+    }
+    
     if (userState && userState.user?.money > amount.amount) {
       dispatch(userBet(parseFloat(money)));
       console.log("Bets: ", userState.lockBet);
@@ -35,8 +50,7 @@ export const Bet: React.FC = () => {
       dispatch(userBet(0)); //do nothing
     }
 
-    console.log(bet);
-    navigator('/playgame');
+    //navigator('/playgame');
   };
 
   const handleBack = (event: React.MouseEvent<HTMLInputElement>) => {

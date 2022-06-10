@@ -20,7 +20,6 @@ import { StandButton } from '../StandButton/StandButton';
 import NextRound from '../NextRound/NextRound';
 import {
   depositMoney,
-  sendMail,
   setSliceMoney,
   toggleLock,
   userBet,
@@ -51,7 +50,6 @@ export const PlayGame: React.FC<IDeck> = (deck: IDeck) => {
   const dealerCards = useSelector((state: RootState) => state.deck.dealerHand);
   const userState = useSelector((state: RootState) => state.user.user);
   const user = useSelector((state: RootState) => state.user);
-  
 
   const handleScoreBoard = (event: React.MouseEvent<HTMLButtonElement>) => {
     navigator('/scores');
@@ -77,7 +75,7 @@ export const PlayGame: React.FC<IDeck> = (deck: IDeck) => {
       //if the bets are not locked, perform the transactions
       if (gameState.winner.includes('player')) {
         //double that amount that the player bets
-        //amount.amount = myUserState.bet * 2;
+        amount.amount = myUserState.bet * 2;
         dispatch(depositMoney(amount));
         dispatch(userBet(0));
       } else if (gameState.winner.includes('dealer')) {
@@ -163,20 +161,7 @@ export const PlayGame: React.FC<IDeck> = (deck: IDeck) => {
       }
     }
   }, [gameState.isDealersTurn, deckState.dealerHand]);
-  // useEffect(() => {
-  //   if (userState) {
-  //     let mailData = {
-  //       firstName: userState?.firstName,
-  //       email: userState?.email,
-  //       msgType: "Win"
-  //     }
-
-  //     if (gameState.winner !== 'none' && gameState.winner !== 'dealer') {
-  //       dispatch(sendMail(mailData))
-  //     }
-  //   }
-  // }, [gameState.winner]);
-
+  
   type propNum = {
     dealerNum: number;
     playerNum: number;

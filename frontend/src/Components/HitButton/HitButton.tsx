@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { getDealDealer, getDealPlayer } from '../../Slices/DeckSlice';
-import { setDealerCount, setGameStatus, setPlayerCount, setWinner, toggleDealerBust, toggleDealerTurn, togglePlayerBusted } from '../../Slices/GameSlice';
-import { sendMail } from '../../Slices/UserSlice';
+import { getDealPlayer } from '../../Slices/DeckSlice';
+import { toggleDealerTurn, togglePlayerBusted } from '../../Slices/GameSlice';
 import { AppDispatch, RootState } from '../../Store';
 
-import { ValueCounter, calcCardValue, calcHandValue, calcVisibleDealerHandValue } from '../ValueCounter/ValueCounter';
+import { calcHandValue } from '../ValueCounter/ValueCounter';
 
 export const HitButton: React.FC = () => {
   const userState = useSelector((state: RootState) => state.user);
@@ -22,9 +20,7 @@ export const HitButton: React.FC = () => {
     if (calcHandValue(playerHand) > 21) { //player busts, dealer automatically win
       dispatch(togglePlayerBusted());
       dispatch(toggleDealerTurn()); //dealers turn to draw cards
-      //dispatch(setWinner("dealer"));
-      //dispatch(togglePlayerBusted());
-
+      
     } else if (calcHandValue(playerHand) == 21) { //player gets 21 TODO: turn should switch to dealer before setting game winner to player
       //dispatch(setWinner("player")); //set winner to player
     } //TODO: Add condition where player stands

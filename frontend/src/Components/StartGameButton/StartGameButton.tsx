@@ -44,14 +44,7 @@ const StartGameButton: React.FC = () => {
         dispatch(toggleDealerTurn())
       }
       dispatch(initializeDeck(userState.user)); //initialize the game
-
-      let money = {
-        userId: userState.user.userId,
-        amount: bet
-      }
-      dispatch(withdrawMoney(money));
     }
-    console.log(userState.user?.money);
   }
 
   return (

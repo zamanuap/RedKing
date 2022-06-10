@@ -74,8 +74,6 @@ export const PlayGame: React.FC<IDeck> = (deck: IDeck) => {
     if (!myUserState.lockBet) {
       //if the bets are not locked, perform the transactions
       if (gameState.winner.includes('player')) {
-        //double that amount that the player bets
-        amount.amount = myUserState.bet * 2;
         dispatch(depositMoney(amount));
         dispatch(userBet(0));
       } else if (gameState.winner.includes('dealer')) {

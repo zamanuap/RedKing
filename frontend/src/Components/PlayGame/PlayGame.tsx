@@ -21,6 +21,7 @@ import NextRound from '../NextRound/NextRound';
 import {
   depositMoney,
   sendMail,
+  setSliceMoney,
   toggleLock,
   userBet,
   withdrawMoney,
@@ -28,12 +29,10 @@ import {
 
 import {
   ValueCounter,
-  calcCardValue,
   calcHandValue,
-  calcVisibleDealerHandValue,
 } from '../ValueCounter/ValueCounter';
 
-import { ToastContainer, toast, TypeOptions } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // going inside PlaGamePage
@@ -51,8 +50,8 @@ export const PlayGame: React.FC<IDeck> = (deck: IDeck) => {
 
   const dealerCards = useSelector((state: RootState) => state.deck.dealerHand);
   const userState = useSelector((state: RootState) => state.user.user);
-
-  console.log('coming from PlayGame line 36', gameState.winner);
+  const user = useSelector((state: RootState) => state.user);
+  
 
   const handleScoreBoard = (event: React.MouseEvent<HTMLButtonElement>) => {
     navigator('/scores');
@@ -78,7 +77,7 @@ export const PlayGame: React.FC<IDeck> = (deck: IDeck) => {
       //if the bets are not locked, perform the transactions
       if (gameState.winner.includes('player')) {
         //double that amount that the player bets
-        amount.amount = myUserState.bet * 2;
+        //amount.amount = myUserState.bet * 2;
         dispatch(depositMoney(amount));
         dispatch(userBet(0));
       } else if (gameState.winner.includes('dealer')) {
@@ -87,6 +86,7 @@ export const PlayGame: React.FC<IDeck> = (deck: IDeck) => {
         dispatch(userBet(0));
       } else if (gameState.winner.includes('tie')) {
         // reset bet amount
+        dispatch(setSliceMoney(user.sliceMoney + user.bet));
         dispatch(userBet(0));
       }
     }

@@ -18,27 +18,6 @@ export const HitButton: React.FC = () => {
   
   const dispatch: AppDispatch = useDispatch();
 
-  
-  useEffect(() => {
-    if (userState.user) {
-      let mailData = {
-        firstName: userState?.user?.firstName,
-        email: userState?.user?.email,
-        msgType: "Win"
-      }
-
-      if (gameState.winner !== 'none' && gameState.winner !== 'dealer') {
-        dispatch(sendMail(mailData))
-      }
-    }
-  }, [gameState.winner]);
-
-
-  useEffect( () => {
-    console.log("Player Hand Value: ", calcHandValue(playerHand));
-    console.log("Dealer Hand Value: ", calcHandValue(dealerHand));
-  }, [deckState.playerHand, deckState.dealerHand]);
-
   useEffect(() => {
     if (calcHandValue(playerHand) > 21) { //player busts, dealer automatically win
       dispatch(togglePlayerBusted());

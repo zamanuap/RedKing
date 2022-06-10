@@ -4,6 +4,7 @@ import { LogOutButton } from '../LogOutButton/LogOutButton';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppDispatch, RootState } from '../../Store';
+import { depositMoney, setSliceMoney } from '../../Slices/UserSlice';
 
 // inside PlayGamePage
 export const Navbar: React.FC = () => {
@@ -13,6 +14,12 @@ export const Navbar: React.FC = () => {
   const userInfo = useSelector((state: RootState) => state.user.user);
   const userState = useSelector((state: RootState) => state.user);
   const gameState = useSelector((state: RootState) => state.game);
+  const sliceMoney = useSelector((state: RootState) => state.user.sliceMoney);
+  const bet = useSelector((state: RootState) => state.user.bet);
+
+  const handleBet = () => {
+    dispatch(setSliceMoney(sliceMoney + bet));
+  }
 
   return (
     <nav className="navBar">
@@ -21,7 +28,10 @@ export const Navbar: React.FC = () => {
           <p>{userInfo ? userInfo.firstName : 'Anonymous'}</p>
         </Link>
         <div className="moneyContainer">
-          <p>{userInfo ? `$${userInfo.money}` : '$0.00'}</p>
+          {
+           //<p>{userInfo ? `$${userInfo.money}` : '$0.00'}</p> 
+          }
+          <p>{userInfo ? `$${sliceMoney}` : '$0.00'}</p> 
           <Link to="/money">
             <button className="moneyBtn">Money</button>
           </Link>
@@ -29,7 +39,7 @@ export const Navbar: React.FC = () => {
           <p>{userInfo ? `$${userState.bet}` : '$0.00'}</p>
           {gameState.gameStatus.includes('Game not Initialized') || gameState.isDealersTurn? (
             <Link to="/bet">
-              <button className="betBtn">Bet</button>
+              <button className="betBtn" onClick={handleBet}>Bet</button>
             </Link>
           ) : (
             // <p className="betsLocked">Bets Are Locked!</p>

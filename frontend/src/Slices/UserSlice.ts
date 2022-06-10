@@ -3,13 +3,12 @@ import React from 'react';
 import axios from 'axios';
 import { IUser } from '../Interfaces/IUser';
 
-//Figure out our default state for this slice
-
 interface UserSliceState {
   loading: boolean;
   error: boolean;
   user?: IUser;
   users?: IUser[];
+  sliceMoney: number;
   bet: number;
   lockBet: boolean;
 }
@@ -19,6 +18,7 @@ const initialUserState: UserSliceState = {
   error: false,
   loading: true,
   bet: 0,
+  sliceMoney: 0
 };
 
 type Login = {
@@ -26,17 +26,14 @@ type Login = {
   password: string;
 };
 
-// called from LoginForm component
 export const loginUser = createAsyncThunk(
   'user/login',
   async (credentials: Login, thunkAPI) => {
     try {
       const res = await axios.post(
-        'http://18.191.118.66:8000/user/login',
+        'http://3.99.223.165:8000/user/login',
         credentials
       );
-
-      // console.log('coming from loginUser async line 32 ', res.data);
 
       return {
         userId: res.data.userId,
@@ -76,7 +73,7 @@ export const registerUser = createAsyncThunk(
   async (credentials: Register, thunkAPI) => {
     try {
       const res = await axios.post(
-        'http://18.191.118.66:8000/user/register',
+        'http://3.99.223.165:8000/user/register',
         credentials
       );
 
@@ -104,7 +101,7 @@ export const updateUser = createAsyncThunk(
     try {
       // axios.defaults.withCredentials = true;
       const res = await axios.post(
-        'http://18.191.118.66:8000/user/update',
+        'http://3.99.223.165:8000/user/update',
         credentials
       );
 
@@ -123,7 +120,7 @@ export const depositMoney = createAsyncThunk(
     try {
       // axios.defaults.withCredentials = true;
       const res = await axios.post(
-        'http://18.191.118.66:8000/user/deposit',
+        'http://3.99.223.165:8000/user/deposit',
         amount
       );
       return res.data;
@@ -138,7 +135,7 @@ export const withdrawMoney = createAsyncThunk(
   async (amount: ManageMoney, thunkAPI) => {
     try {
       const res = await axios.post(
-        'http://18.191.118.66:8000/user/withdraw',
+        'http://3.99.223.165:8000/user/withdraw',
         amount
       );
       return res.data;
@@ -152,7 +149,7 @@ export const retrieveUserScores = createAsyncThunk(
   'user/scores',
   async (thunkAPI) => {
     try {
-      const res = await axios.get('http://18.191.118.66:8000/user/allUsers');
+      const res = await axios.get('http://3.99.223.165:8000/user/allUsers');
       return res.data;
     } catch (e) {
       console.log('Some Error');
@@ -164,7 +161,7 @@ export const sendMail = createAsyncThunk(
   'user/mail',
   async (data: Mail, thunkAPI) => {
     try {
-      const res = await axios.post('http://18.191.118.66:8000/mail', data);
+      const res = await axios.post('http://3.99.223.165:8000/mail', data);
       return res.data;
     } catch (e) {
       console.log('Some Error');
@@ -183,6 +180,9 @@ export const UserSlice = createSlice({
     logoutUser: (state) => {
       state.user = undefined;
     },
+    setSliceMoney: (state, action) => {
+      state.sliceMoney = action.payload;
+    },
     userBet: (state, action) => {
       state.bet = action.payload;
     },
@@ -194,6 +194,7 @@ export const UserSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(loginUser.fulfilled, (state, action) => {
       state.user = action.payload;
+      state.sliceMoney = action.payload.money;
       // state.error = false;
     });
     builder.addCase(loginUser.rejected, (state, action) => {
@@ -217,10 +218,14 @@ export const UserSlice = createSlice({
 
     builder.addCase(depositMoney.fulfilled, (state, action) => {
       state.user = action.payload;
+      state.sliceMoney = state.user?.money;
+      console.log(state.sliceMoney);
     });
 
     builder.addCase(withdrawMoney.fulfilled, (state, action) => {
       state.user = action.payload;
+      state.sliceMoney = state.user?.money;
+      console.log(state.sliceMoney);
     });
 
     builder.addCase(retrieveUserScores.fulfilled, (state: any, action: any) => {
@@ -248,6 +253,6 @@ export const UserSlice = createSlice({
 });
 // If we had normal actions and reducers we would export them like this
 // export const { toggleError } = UserSlice.actions;
-export const { logoutUser, userBet, toggleLock } = UserSlice.actions;
+export const { logoutUser, setSliceMoney, userBet, toggleLock } = UserSlice.actions;
 
 export default UserSlice.reducer;

@@ -4,12 +4,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { getDealDealer, getDealPlayer, initializeDeck } from '../../Slices/DeckSlice';
 import { setGameStatus, setWinner, toggleDealerBust, toggleDealerTurn, togglePlayerBusted } from '../../Slices/GameSlice';
+import { withdrawMoney } from '../../Slices/UserSlice';
 import { AppDispatch, RootState } from '../../Store'
 
 const StartGameButton: React.FC = () => {
   const userState = useSelector((state: RootState) => state.user);
   const deckState = useSelector((state: RootState) => state.deck);
   const gameState = useSelector((state: RootState) => state.game);
+  const bet = useSelector((state: RootState) => state.user.bet);
 
   const dispatch: AppDispatch = useDispatch();
   const navigator = useNavigate();
@@ -41,7 +43,6 @@ const StartGameButton: React.FC = () => {
       if(gameState.isDealersTurn) { //if it was the dealers turn for some reason, give the turn back to the player
         dispatch(toggleDealerTurn())
       }
-
       dispatch(initializeDeck(userState.user)); //initialize the game
     }
   }

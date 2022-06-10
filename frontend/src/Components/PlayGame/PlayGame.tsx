@@ -20,7 +20,7 @@ import { StandButton } from '../StandButton/StandButton';
 import NextRound from '../NextRound/NextRound';
 import {
   depositMoney,
-  sendMail,
+  setSliceMoney,
   toggleLock,
   userBet,
   withdrawMoney,
@@ -28,12 +28,10 @@ import {
 
 import {
   ValueCounter,
-  calcCardValue,
   calcHandValue,
-  calcVisibleDealerHandValue,
 } from '../ValueCounter/ValueCounter';
 
-import { ToastContainer, toast, TypeOptions } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // going inside PlaGamePage
@@ -51,8 +49,7 @@ export const PlayGame: React.FC<IDeck> = (deck: IDeck) => {
 
   const dealerCards = useSelector((state: RootState) => state.deck.dealerHand);
   const userState = useSelector((state: RootState) => state.user.user);
-
-  console.log('coming from PlayGame line 36', gameState.winner);
+  const user = useSelector((state: RootState) => state.user);
 
   const handleScoreBoard = (event: React.MouseEvent<HTMLButtonElement>) => {
     navigator('/scores');
@@ -87,6 +84,7 @@ export const PlayGame: React.FC<IDeck> = (deck: IDeck) => {
         dispatch(userBet(0));
       } else if (gameState.winner.includes('tie')) {
         // reset bet amount
+        dispatch(setSliceMoney(user.sliceMoney + user.bet));
         dispatch(userBet(0));
       }
     }
@@ -163,20 +161,7 @@ export const PlayGame: React.FC<IDeck> = (deck: IDeck) => {
       }
     }
   }, [gameState.isDealersTurn, deckState.dealerHand]);
-  // useEffect(() => {
-  //   if (userState) {
-  //     let mailData = {
-  //       firstName: userState?.firstName,
-  //       email: userState?.email,
-  //       msgType: "Win"
-  //     }
-
-  //     if (gameState.winner !== 'none' && gameState.winner !== 'dealer') {
-  //       dispatch(sendMail(mailData))
-  //     }
-  //   }
-  // }, [gameState.winner]);
-
+  
   type propNum = {
     dealerNum: number;
     playerNum: number;

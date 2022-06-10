@@ -20,7 +20,6 @@ export const StandButton: React.FC = () => {
   //set to dealer turn
   const handleStandButton = () => {
       //give turn to the dealer
-      console.log("Stand Clicked");
       dispatch(toggleDealerTurn());
   }
 
